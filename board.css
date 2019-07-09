@@ -7,7 +7,7 @@ color: red;
 }
 td {
     background-color: aliceblue;
-    background-size: 30cm;
+    background-size: 100px 100px;
     border-color: black;
     text-align: center;
 }
