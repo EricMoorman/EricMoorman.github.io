@@ -1,0 +1,78 @@
+<html>
+	<link rel="stylesheet" type="text/css" href="Bingo.css">
+	
+	<div id="main_container">
+		
+		<div id="container_left">
+		
+			<div id="table_container">
+				<table>
+				<tr>
+					<td><div class="bingoSquare" id="0"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="1"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="2"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="3"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="4"><div class="bingoText"></div></div></td>
+				</tr>
+				<tr>
+					<td><div class="bingoSquare" id="5"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="6"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="7"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="8"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="9"><div class="bingoText"></div></div></td>
+				</tr>
+				<tr>
+					<td><div class="bingoSquare" id="10"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="11"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="12"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="13"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="14"><div class="bingoText"></div></div></td>
+				</tr>
+				<tr>
+					<td><div class="bingoSquare" id="15"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="16"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="17"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="18"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="19"><div class="bingoText"></div></div></td>
+				</tr>
+				<tr>
+					<td><div class="bingoSquare" id="20"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="21"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="22"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="23"><div class="bingoText"></div></div></td>
+					<td><div class="bingoSquare" id="24"><div class="bingoText"></div></div></td>
+				</tr>
+			</table>
+			</div>
+		
+		</div>
+	
+	
+		<div id="container_right">
+			<div id="console_container">
+				<input id="color_picker" type="color">Choose a color</input>
+				<br>
+				<input id="name_picker" type="text">Choose a nickname</input>
+				<br>
+				<button id="join">Join</button>
+				<button id="reset">Reset</button>
+				
+				<div id="log_block">
+					<ul id="log_list">
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	
+	
+	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="Bingo.js"></script>
+	
+</html>
