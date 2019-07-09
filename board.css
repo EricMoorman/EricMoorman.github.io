@@ -6,8 +6,8 @@ p {
 color: red;
 }
 td {
-    background-position: left center;
-    background-color: #00A7E1; 
-    background-repeat: no-repeat;
-    background-size: 100px 100px; 
+    background-color: #ffffff; 
+    text-align:center;
+    width:100px;
+    height:100px;
 }
