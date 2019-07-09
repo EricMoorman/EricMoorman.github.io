@@ -2,6 +2,7 @@ var database;
 var usersRef;
 var squareRef;
 var boardRef;
+var logRef;
 
 var username = "Anonymous";
 var userColor = "#aabbee";
@@ -56,6 +57,7 @@ function generateBoard(){
 	usersRef = database.collection('users');
 	squaresRef = database.collection('squares');
 	boardRef = database.collection('board');
+	logRef = database.collection('logs');
 	
 	
 	usersRef.onSnapshot(querySnapshot => {
@@ -69,6 +71,17 @@ function generateBoard(){
 	boardRef.onSnapshot(querySnapshot => {
 		querySnapshot.docChanges().forEach(change => {
 			updateLocalBoard(change);
+		});
+	});
+	
+	
+	logRef.onSnapshot(querySnapshot => {
+		querySnapshot.docChanges().forEach(change => {
+			let aa = change.doc.data().data;
+			$("#log_list").empty();
+			for(let i = 0; i < aa.length; i++){
+				log(aa[i]);
+			}
 		});
 	});
 	
@@ -89,7 +102,7 @@ function generateBoard(){
 		userColor = $("#color_picker").val();
 		
 		$("#join").prop("disabled", true);
-		log("<li color="+userColor+">"+username+" joined</li>");
+		sendMessage(""+username+" joined");
 		joinAsUser();
 	});
 	
@@ -100,6 +113,7 @@ function updateLocalBoard(change){
 	let id = change.doc.id;
 	localBoard[id].users = change.doc.data().state;
 	$("#"+id).children().last().text(change.doc.data().goal);
+	localBoard[id].goal = change.doc.data().goal;
 	
 	let colors = [];
 	for(let i = 0; i < localBoard[id].users.length; i++){
@@ -131,10 +145,14 @@ function toggleSquareColor(j_square, colors){
 function setBoardState(index){
 	
 	let sel = localBoard[index].selected;
+	let r = Math.floor(index / 5) + 1;
+	let c = index % 5 + 1;
 	
 	if(sel){
 		boardRef.doc(""+index).update({
 			state: firebase.firestore.FieldValue.arrayUnion(username)
+		}).then(function(){
+			sendMessage(""+username+" clicked ("+r+","+c+") {"+localBoard[index].goal+"}");
 		});
 	}else{
 		boardRef.doc(""+index).update({
@@ -155,6 +173,8 @@ function resetBoard(){
 			state : []
 		}, {merge: true});
 	}
+	
+	clearLogs();
 	
 }
 
@@ -201,13 +221,27 @@ function getAllPotentialSquares(){
 		});
 		
 	});
-	
 }
 
 
 function log(str){
 	$("#log_list").append(str);
 	$('#log_block').scrollTop($('#log_block')[0].scrollHeight);
+}
+
+function sendMessage(str){
+	
+	let st = new Date().toLocaleTimeString() + "  :  " + str;
+	let msg = "<li style=\'color:"+userColor+";\'>"+st+"</li>";
+	logRef.doc("log").update({
+		data: firebase.firestore.FieldValue.arrayUnion(msg)
+	});
+}
+
+function clearLogs(){
+	logRef.doc("log").update({
+		data: []
+	});
 }
 
 window.onload = generateBoard();
