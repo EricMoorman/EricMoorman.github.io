@@ -74,6 +74,7 @@ td:after{
 #console_container{
 	padding-left: 20px;
 	padding-right: 20px;
+	padding-top: 20px;
 }
 
 #main_container{
@@ -100,12 +101,27 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 
+input[type="text"] {
+	-webkit-appearance: none;
+	border: 1px solid white;
+    padding: 4px;
+	margin: 8px;
+	vertical-align: middle;
+}
+
+button{
+	border: 1px solid white;
+    padding: 4px;
+	margin: 8px;
+	width:50px;
+	vertical-align: middle;
+}
+
 #log_block{
 	border: 1px solid #282828;
 	overflow: auto;
 	height:40%;
-	margin-top: 20px;
-	
+	margin: 8px;
 }
 
 .b_color{

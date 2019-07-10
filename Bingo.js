@@ -164,6 +164,13 @@ function setBoardState(index){
 
 function resetBoard(){
 	
+	let newSeed = $("#seed_picker").val();
+	$("#seed_picker").val("");
+	if(newSeed == ""){
+		newSeed = ""+Math.round((Math.random() * 9999999));
+	}
+	
+	Math.seedrandom(newSeed);
 	let randomArray = getPermutationArray();
 	
 	for(let i = 0; i < 25; i++){
@@ -175,6 +182,7 @@ function resetBoard(){
 	}
 	
 	clearLogs();
+	sendMessage(""+username+" reset with seed " + newSeed);
 	
 }
 
