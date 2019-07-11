@@ -103,7 +103,7 @@ function generateBoard(){
 	$("#add_challenge").click(function(){
 		desc = $("#desc_input").val();
 		weight = $("#weight_input").val();
-		if (desc != "" && weight != "") {
+		if ((desc != "" && desc != null) && (weight != "" && weight != null)) {
 			$("#desc_input").val("");
 			$("#weight_input").val("");
 
@@ -121,7 +121,7 @@ function generateBoard(){
 	});
 
 	$("#send_message").click(function(){
-		message = $("send_message").val();
+		message = $("#message_input").val();
 		sendMessage(message);
 	});
 }
