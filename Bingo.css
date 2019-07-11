@@ -63,6 +63,22 @@ td:after{
 	float:left;
 	margin:auto;
 	display:inline-block;
+}
+
+#all_challenges{
+	width:50%;
+	float:right;
+	margin:auto;
+	display:inline-block;
+	background-color: #181822;
+	overflow: scroll;
+}
+
+#add_challenge{
+	width:30%;
+	float:left;
+	margin:auto;
+	display:inline-block;
 	
 }
 
