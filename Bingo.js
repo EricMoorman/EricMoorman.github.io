@@ -258,7 +258,7 @@ function getAllPotentialSquares(){
 	  .then(snapshot => {
 		snapshot.forEach(doc => {
 			localPotentialSquares.push(doc.data().desc);
-			$("#challenge_list").val = $("#challenge_list").val.append(doc.data().desc+"\n")
+			$("#challenge_list").val = $("#challenge_list").val.concat(doc.data().desc+"\n")
 		});	
 		
 	});
