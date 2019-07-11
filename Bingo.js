@@ -252,12 +252,12 @@ function joinAsUser(){
 }
 
 function getAllPotentialSquares(){
-	$("challenge_list").val("");
+	$("#challenge_list").val("");
 	let query = squaresRef.get()
 	  .then(snapshot => {
 		snapshot.forEach(doc => {
 			localPotentialSquares.push(doc.data().desc);
-			$("challenge_list").val($("challenge_list").val().append(doc.data().desc+"\n"))
+			$("#challenge_list").val($("#challenge_list").val().append(doc.data().desc+"\n"))
 		});	
 		
 	});
