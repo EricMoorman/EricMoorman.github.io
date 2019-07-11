@@ -3,7 +3,9 @@
 	
 	<div id="main_container">
 		
-		<div id="container_left">
+		<div id="game_container">
+		
+		<div class="container_left">
 		
 			<div id="table_container">
 				<table>
@@ -48,7 +50,7 @@
 		</div>
 	
 	
-		<div id="container_right">
+		<div class="container_right">
 			<div id="console_container">
 				<input id="color_picker" type="color">Choose a color</input>
 				<br>
@@ -66,27 +68,48 @@
 			</div>
 		</div>
 	
+		</div>
+	
+	
+		<div id="challenge_container">
+		<div id="challenge_container_2">
+			<div class="container_left">
+			
+				<div id="add_challenge">
+					<h2>Add New Challenges</h2>
+					<br>
+					<input id="desc_input" type="text">Enter a Description</input>
+					<br>
+					<input id="weight_input" type="text">Enter a Weight</input>
+					<br>
+					<button id="add_challenge">Add</button>
+				</div>
+			</div>
+			
+			<div class="container_right">
+				<div id="all_challenges">
+				
+					<label id="challenge_list">
+						All Challenges
+					</label>
+					
+					<div id="ch_block">
+						<ul id="ch_list">
+						
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		</div>
 	</div>
 	
-	<div>
-		<div id="add_challenge">
-			<h2>Add New Challenges</h2>
-			<br>
-			<input id="desc_input" type="text">Enter a Description</input>
-			<br>
-			<input id="weight_input" type="text">Enter a Weight</input>
-			<br>
-			<button id="add_challenge">Add</button>
-		</div>
-		<div id="all_challenges">
-			<label id="challenge_list">
-				default
-			</label>
-		</div>
-	</div>
+	
 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.1/seedrandom.min.js"></script>
+	
 	
 	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
@@ -94,5 +117,6 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="Bingo.js"></script>
+
 
 </html>

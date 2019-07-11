@@ -11,7 +11,7 @@ table, td{
 }
 
 table{
-	width: 100%;
+	width: 550px;
 	border-collapse: collapse;
 }
 
@@ -49,54 +49,90 @@ td:after{
 }
 
 
-#container_right{
+.container_right{
 	display:inline-block;
-	background-color: #181822;
 	width:50%;
 	height:100%;
 	float:right;
 	margin:auto;
-}
-
-#container_left{
-	width:50%;
-	float:left;
-	margin:auto;
-	display:inline-block;
-}
-
-#all_challenges{
-	width:50%;
-	float:right;
-	margin:auto;
-	display:inline-block;
-	background-color: #181822;
-	overflow: scroll;
-}
-
-#add_challenge{
-	width:30%;
-	float:left;
-	margin:auto;
-	display:inline-block;
 	
 }
 
+.container_left{
+	width:50%;
+	float:left;
+	margin:auto;
+	display:inline-block;
+
+}
+
+
 #table_container{
-	padding-left: 20px;
-	padding-right: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 #console_container{
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	height:100%;
+	
+	background-color: #181822;
 }
 
 #main_container{
 	width: 1170px;
 	overflow:auto;
 	margin: auto;
+	
+
+}
+
+#game_container{
+	height: 550px;
+	
+}
+
+
+
+#challenge_container{
+
+	width: 1170px;
+	height: 550px;
+	display:inline-block;
+	margin: auto;
+	padding-top:20px;
+	
+}
+
+#challenge_container_2{
+
+	background-color: #181822;
+	width: 100%;
+	height: 100%;
+}
+
+#all_challenges{
+	float:right;
+	margin:20px;
+	display:inline-block;
+	background-color: #181822;
+	overflow: auto;
+	width:550px;
+}
+
+#add_challenge{
+	float:left;
+	margin:20px;
+	display:inline-block;
+	
+}
+
+#ch_block{
+	border: 1px solid #282828;
+	overflow: auto;
+	height:80%;
+	margin: 8px;
 }
 
 

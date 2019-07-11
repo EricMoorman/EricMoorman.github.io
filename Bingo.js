@@ -89,6 +89,28 @@ function generateBoard(){
 	});
 	
 	
+	
+	squaresRef.onSnapshot(querySnapshot => {
+		querySnapshot.docChanges().forEach(change=>{
+			localPotentialSquares.push(change.doc.data().desc);
+			
+		});
+		setKnownChallenges();
+		
+	});
+
+
+	let query = squaresRef.get()
+	  .then(snapshot => {
+		snapshot.forEach(doc => {
+			localPotentialSquares.push(doc.data().desc);
+			$("#challenge_list").val($("#challenge_list").val().concat(doc.data().desc+"\n"))
+		});	
+	});
+
+
+
+	
 	getAllPotentialSquares();
 	
 	
@@ -121,10 +143,24 @@ function generateBoard(){
 	});
 
 	$("#send_message").click(function(){
-		message = $("#message_input").val();
-		$("#message_input").val("");
-		sendMessage(message);
+		submitChatMessage();
 	});
+	
+	
+	$('#message_input').keydown(function (event) {
+		let keypressed = event.keyCode || event.which;
+		if (keypressed == 13) {
+			submitChatMessage();
+		}
+	});
+}
+
+function submitChatMessage(){
+	message = $("#message_input").val();
+	$("#message_input").val("");
+	if(message != ""){
+		sendMessage(username + " : " + message);
+	}
 }
 
 
@@ -142,6 +178,15 @@ function updateLocalBoard(change){
 
 	toggleSquareColor($("#"+id), colors);
 	
+}
+
+
+function setKnownChallenges(){
+	let ch = $("#ch_list");
+	ch.empty();
+	localPotentialSquares.forEach(challenge =>{
+		ch.append("<li>"+challenge+"</li>");
+	});
 	
 }
 
@@ -171,7 +216,7 @@ function setBoardState(index){
 		boardRef.doc(""+index).update({
 			state: firebase.firestore.FieldValue.arrayUnion(username)
 		}).then(function(){
-			sendMessage(""+username+" clicked ("+r+","+c+") {"+localBoard[index].goal+"}");
+			sendMessage("<b><i>"+username+" clicked ("+r+","+c+") {"+localBoard[index].goal+"}</i></b>");
 		});
 	}else{
 		boardRef.doc(""+index).update({
@@ -191,6 +236,11 @@ function resetBoard(){
 	
 	Math.seedrandom(newSeed);
 	let randomArray = getPermutationArray();
+	
+	if(localPotentialSquares.length < 25){
+		sendMessage("Not enough squares to reset");
+		return;
+	}
 	
 	for(let i = 0; i < 25; i++){
 		let g = localPotentialSquares[randomArray[i]];
@@ -253,12 +303,10 @@ function joinAsUser(){
 }
 
 function getAllPotentialSquares(){
-	$("#challenge_list").val = "";
 	let query = squaresRef.get()
 	  .then(snapshot => {
 		snapshot.forEach(doc => {
 			localPotentialSquares.push(doc.data().desc);
-			$("#challenge_list").val($("#challenge_list").val().concat(doc.data().desc+"\n"))
 		});	
 		
 	});
