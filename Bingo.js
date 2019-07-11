@@ -3,6 +3,8 @@ var usersRef;
 var squareRef;
 var boardRef;
 var logRef;
+var desc;
+var weight;
 
 var username = "Anonymous";
 var userColor = "#aabbee";
@@ -97,6 +99,16 @@ function generateBoard(){
 		
 	})
 	
+	$("#add_challenge").click(function(){
+		desc = $("#desc_input").val();
+		weight = $("#weight_input").val();
+		
+		$("#desc_input").val("");
+		$("#weight_input").val("");
+
+		addChallenge(desc, weight)
+	});
+	
 	$("#join").click(function(){
 		username = $("#name_picker").val();
 		userColor = $("#color_picker").val();
@@ -105,7 +117,6 @@ function generateBoard(){
 		sendMessage(""+username+" joined");
 		joinAsUser();
 	});
-	
 }
 
 
@@ -201,6 +212,19 @@ function addUser(){
 	usersRef.doc(username).set({
 		name: username,
 		color: userColor
+	});
+}
+
+function addChallenge(desc_text, weight_text) {
+	squaresRef.add({
+		desc: desc_text,
+		weight: weight_text
+	})
+	.then(function(docRef) {
+		sendMessage("Square " + desc + " successfully added!");
+	})
+	.catch(function(error) {
+		sendMessage("Square " + desc + " failed to be added!");
 	});
 }
 
