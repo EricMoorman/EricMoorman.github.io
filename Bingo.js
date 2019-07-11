@@ -122,6 +122,7 @@ function generateBoard(){
 
 	$("#send_message").click(function(){
 		message = $("#message_input").val;
+		$("#message_input").val = "";
 		sendMessage(message);
 	});
 }
