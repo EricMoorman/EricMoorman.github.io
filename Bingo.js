@@ -5,6 +5,7 @@ var boardRef;
 var logRef;
 var desc;
 var weight;
+var message;
 
 var username = "Anonymous";
 var userColor = "#aabbee";
@@ -102,11 +103,12 @@ function generateBoard(){
 	$("#add_challenge").click(function(){
 		desc = $("#desc_input").val();
 		weight = $("#weight_input").val();
-		
-		$("#desc_input").val("");
-		$("#weight_input").val("");
+		if (desc != "" && weight != "") {
+			$("#desc_input").val("");
+			$("#weight_input").val("");
 
-		addChallenge(desc, weight)
+			addChallenge(desc, weight)
+		}
 	});
 	
 	$("#join").click(function(){
@@ -116,6 +118,11 @@ function generateBoard(){
 		$("#join").prop("disabled", true);
 		sendMessage(""+username+" joined");
 		joinAsUser();
+	});
+
+	$("#send_message").click(function(){
+		message = $("send_message").val();
+		sendMessage(message);
 	});
 }
 
