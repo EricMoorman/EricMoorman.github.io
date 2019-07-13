@@ -98,20 +98,6 @@ function generateBoard(){
 		setKnownChallenges();
 		
 	});
-
-
-	let query = squaresRef.get()
-	  .then(snapshot => {
-		snapshot.forEach(doc => {
-			localPotentialSquares.push(doc.data().desc);
-			$("#challenge_list").val($("#challenge_list").val().concat(doc.data().desc+"\n"))
-		});	
-	});
-
-
-
-	
-	getAllPotentialSquares();
 	
 	
 	$(".bingoSquare").each(function(index){
